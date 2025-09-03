@@ -1,0 +1,38 @@
+<div class="container">
+    <h1>Lista de compras</h1>
+
+    <form class="add-item-form" #frm="ngForm" (ngSubmit)="addProduct()" (reset)="resetProducts()">
+        <input type="text" name="productName" id="productName" placeholder="Digite o nome do produto"
+            [(ngModel)]="productName" />
+        <button type="submit">Adicionar</button>
+        <button type="reset">Limpar</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Item</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(item of listProducts; track item.id){
+            <tr [ngClass]="{'element-selected' : item.selected }">
+                <td>{{item.id}}</td>
+                <td>{{item.productName}}</td>
+                <td><input type="checkbox" (click)="selectItem(item)"></td>
+            </tr>
+            }@empty {
+            <tr colspan="3">
+                Nenhum item adicionado.
+            </tr>
+            }
+            <!-- <tr *ngFor="let item of listProducts">
+                <td>{{item.id}}</td>
+                <td>{{item.productName}}</td>
+                <td><input type="checkbox"></td>
+            </tr> -->
+        </tbody>
+    </table>
+</div>
