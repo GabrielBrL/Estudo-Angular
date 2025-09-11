@@ -1,0 +1,20 @@
+<p-toolbar>
+    <ng-template #start>
+        <p-togglebutton (onChange)="toggleDarkMode()" offIcon="pi pi-sun" onIcon="pi pi-moon" offLabel="Claro"
+            onLabel="Escuro" />
+    </ng-template>
+    <!-- <ng-template #center>
+            <p-iconfield iconPosition="left">
+                <p-inputicon styleClass="pi pi-search" />
+                <input type="text" pInputText placeholder="Search" />
+            </p-iconfield>
+        </ng-template> -->
+    <ng-template #end>
+        <div class="flex items-center gap-3">
+            <p-button routerLink="/cadastro" label="Formulário" icon="pi pi-book" iconPos="left" text plain />
+            <p-button routerLink="/consulta" label="Consulta" icon="pi pi-search" text plain />
+        </div>
+        <!-- <p-splitbutton label="Save" [model]="items" /> -->
+    </ng-template>
+</p-toolbar>
+<router-outlet />

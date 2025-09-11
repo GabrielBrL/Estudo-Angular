@@ -1,0 +1,61 @@
+<div fxLayout="row" fxLayoutAlign="center">
+    <div fxLayout="column" fxFlex="75%">
+        <form #clientesFrm="ngForm" class="mt-60" (ngSubmit)="salvarCliente()">
+            <p-card header="Dados pessoais">
+                <div class="mt-20" fxLayout="column" fxLayoutGap="16px">
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <p-floatlabel variant="on" fxFlex="100%">
+                            <input [(ngModel)]="cliente.nome" name="nome" pInputText id="nome" autocomplete="off"
+                                class="full-width" type="text" />
+                            <label for="nome">Nome</label>
+                        </p-floatlabel>
+
+                        <p-floatlabel variant="on" fxFlex="100%">
+                            <input [(ngModel)]="cliente.email" name="email" pInputText id="email" autocomplete="off"
+                                class="full-width" type="email" />
+                            <label for="email">Email</label>
+                        </p-floatlabel>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <p-floatlabel variant="on" fxFlex="100%">
+                            <input [(ngModel)]="cliente.cpf" maxlength="14" name="cpf" pInputText id="cpf"
+                                autocomplete="off" class="full-width" type="text" mask="000.000.000-00" />
+                            <label for="cpf">CPF</label>
+                        </p-floatlabel>
+
+                        <p-floatlabel variant="on" fxFlex="100%">
+                            <!-- <p-datepicker [(ngModel)]="cliente.dataNascimento" name="dataNascimento" inputId="datanasc" dateFormat="dd/mm/yy"
+                            showIcon styleClass="full-width" inputId="icondisplay" />
+                            -->
+                            <input [(ngModel)]="cliente.dataNascimento" name="dataNascimento" pInputText id="cpf"
+                                autocomplete="off" class="full-width" type="text" mask="00/00/0000" />
+                            <label for="datanasc">Data de nascimento</label>
+                        </p-floatlabel>
+
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <p-floatlabel variant="on" fxFlex="100%">
+                            <p-select [(ngModel)]="cliente.estado" class="full-width" name="estado" inputId="estado"
+                                [options]="estados" optionLabel="nome" [showClear]="true" emptyMessage="Sem resultados" styleClass="w-full" (onChange)="setEstado(cliente.estado!)"/>
+                            <label for="estado">Estado</label>
+                        </p-floatlabel>
+
+                        <p-floatlabel variant="on" fxFlex="100%">
+                            <p-select [(ngModel)]="cliente.municipio" class="full-width" [filter]="true" filterBy="nome" emptyMessage="Sem resultados" name="municipio" inputId="estado"
+                                [options]="municipios" optionLabel="nome" [showClear]="true" styleClass="w-full" />
+                            <label for="estado">Município</label>
+                        </p-floatlabel>
+                    </div>
+                    <div class="mt-20" fxLayoutAlign="end" fxLayoutGap="16px">
+                        @if(!idUsuario){
+                        <p-button type="submit" label="Salvar" icon="pi pi-save"></p-button>
+                        }@else {
+                        <p-button type="submit" label="Atualizar" icon="pi pi-refresh"></p-button>
+                        }
+                        <p-button type="reset" label="Limpar" icon="pi pi-eraser" text plain></p-button>
+                    </div>
+                </div>
+            </p-card>
+        </form>
+    </div>
+</div>
