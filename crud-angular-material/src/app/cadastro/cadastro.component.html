@@ -36,13 +36,13 @@
                     <div fxLayout="row" fxLayoutGap="16px">
                         <p-floatlabel variant="on" fxFlex="100%">
                             <p-select [(ngModel)]="cliente.estado" class="full-width" name="estado" inputId="estado"
-                                [options]="estados" optionLabel="nome" [showClear]="true" emptyMessage="Sem resultados" styleClass="w-full" (onChange)="setEstado(cliente.estado!)"/>
+                                [options]="estados" optionValue="sigla" optionLabel="nome" [showClear]="true" emptyMessage="Sem resultados" styleClass="w-full" (onChange)="setEstado(cliente.estado!)"/>
                             <label for="estado">Estado</label>
                         </p-floatlabel>
 
                         <p-floatlabel variant="on" fxFlex="100%">
                             <p-select [(ngModel)]="cliente.municipio" class="full-width" [filter]="true" filterBy="nome" emptyMessage="Sem resultados" name="municipio" inputId="estado"
-                                [options]="municipios" optionLabel="nome" [showClear]="true" styleClass="w-full" />
+                                [options]="municipios" optionValue="nome" optionLabel="nome" [showClear]="true" styleClass="w-full" />
                             <label for="estado">Município</label>
                         </p-floatlabel>
                     </div>

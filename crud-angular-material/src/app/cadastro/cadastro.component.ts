@@ -40,31 +40,43 @@ export class CadastroComponent implements OnInit {
     this._route.queryParamMap.subscribe((param: any) => {
       this.idUsuario = param["params"]["idUsuario"];
       this.cliente = Cliente.newCliente();
-      if (this.idUsuario) {
-        this.cliente = this._clienteService.getCliente(this.idUsuario) || Cliente.newCliente();
-      }
     });
-    this._brasilApiService.getEstados().subscribe(
-      {
-        next: (estados) => {
-          this.estados = estados.sort((a, b) => a.nome.localeCompare(b.nome));
-          this.municipios = [
-
-          ]
-        },
-        error: (erro) => console.log(erro)
-      });
+    if (this.idUsuario) {
+      this.cliente = this._clienteService.getCliente(this.idUsuario) || Cliente.newCliente();
+      if (this.cliente.estado) {
+        this.getMunicipios(this.cliente.estado);
+      }
+    }
+    this.getEstados();
   }
 
   setEstado(estado: any) {
     this.municipios = [];
     this.cliente.municipio = undefined;
-    this._brasilApiService.getMunicipios(estado.sigla).subscribe(
+    this._brasilApiService.getMunicipios(estado).subscribe(
       {
         next: (municipios) => this.municipios = municipios,
         error: (erro) => console.log(erro)
       });
 
+  }
+
+  getEstados() {
+    this._brasilApiService.getEstados().subscribe(
+      {
+        next: (estados) => {
+          this.estados = estados.sort((a, b) => a.nome.localeCompare(b.nome))
+        },
+        error: (erro) => console.log(erro)
+      });
+  }
+
+  getMunicipios(estado: string) {
+    this._brasilApiService.getMunicipios(estado).subscribe(
+      {
+        next: (municipios) => this.municipios = municipios,
+        error: (erro) => console.log(erro)
+      });
   }
 
 
