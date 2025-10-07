@@ -1,26 +1,33 @@
 <header class="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-6 shadow-lg">
+
     <div class="text-center">
-        <h1 class="text-3x1 font-bold">Título</h1>
-        <h1 class="text-lg mt-2">Subtítulo</h1>
+        <h1 class="text-3x1 font-bold">{{props.titulo}}</h1>
+        <h1 class="text-lg mt-2">{{props.subtitulo}}</h1>
+    </div>
+    <div class="absolute top-7 right-12">
+        <div class="flex flex-row items-center gap-x-4">
+            <p>{{profile.name}}</p>
+            <img width="45" [src]="profile.picture" [alt]="profile.name" />
+        </div>
     </div>
 
-    <div class="mt-4">
+    <div class=" mt-4">
         <hr class="border-t border-blue-300 opacity-50" />
     </div>
 
     <nav class="mt-4">
         <ul class="flex justify-center space-x-6 text-white font-semibold">
             <li>
-                <a class="hover:text-yellow-300">Galeria</a>
+                <a routerLink="/paginas/galeria" class="hover:text-yellow-300">Galeria</a>
             </li>
             <li>
-                <a class="hover:text-yellow-300">Categorias</a>
+                <a routerLink="/paginas/categorias" class="hover:text-yellow-300">Categorias</a>
             </li>
             <li>
-                <a class="hover:text-yellow-300">Lugares</a>
+                <a routerLink="/paginas/lugares" class="hover:text-yellow-300">Lugares</a>
             </li>
             <li>
-                <a class="hover:text-yellow-300">Sair</a>
+                <a routerLink="/paginas" (click)="logout()" class="hover:text-yellow-300">Sair</a>
             </li>
         </ul>
     </nav>

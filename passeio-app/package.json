@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "serve": "json-server ./api/db.json",
+    "serve:production": "json-server ./api/db.production.json --port 4000"
   },
   "private": true,
   "dependencies": {
@@ -30,7 +32,9 @@
     "@angular/cli": "^19.0.2",
     "@angular/compiler-cli": "^19.0.0",
     "@types/jasmine": "~5.1.0",
+    "angular-oauth2-oidc": "^19.0.0",
     "jasmine-core": "~5.4.0",
+    "json-server": "^0.17.4",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",

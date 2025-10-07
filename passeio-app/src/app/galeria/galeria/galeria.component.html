@@ -1,0 +1,34 @@
+<form #frm="ngForm" (keyup)="filtro()">
+    <div class="p-4 bg-white shadow">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+
+            <input type="text" id="termoPesquisa" placeholder="Pesquisar pelo nome do local"
+                class="w-full border border-gray-300 p-2 rounded shadow-sm focus:ring-blue-400" name="termoPesquisa"
+                [(ngModel)]="termoPesquisa" />
+
+            <select name="categoriaPesquisa" id="categoriaPesquisa"
+                class="w-full border border-gray-300 p-2 rounded shadow-sm focus:ring-blue-400"
+                [(ngModel)]="categoriaPesquisa" (change)="filtro()">
+                <option [value]="-1">Todas as categorias</option>
+                <option *ngFor="let opt of categorias" [value]="opt.nome">{{opt.nome}}</option>
+            </select>
+
+        </div>
+    </div>
+</form>
+
+<div class="p-4 grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="bg-white shadow rounded overflow-hidden" *ngFor="let lugar of lugares">
+        <img [src]="lugar.urlFoto" [alt]="lugar.localizacao" class="w-full h-40 object-cover">
+        <div class="p-4">
+            <h2 class="text-lg font-semibold">
+                {{lugar.nome}}
+            </h2>
+            <p class="text-gray-500">Categoria: <span class="text-blue-600">{{lugar.categoria}}</span></p>
+            <p class="text-gray-500">Localização: <span class="text-blue-600">{{lugar.localizacao}}</span></p>
+            <div class="mt-2 flex items-center">
+                <span class="text-yellow-500" [innerHTML]="getTotalEstrelas(lugar)"></span>
+            </div>
+        </div>
+    </div>
+</div>
